@@ -4,7 +4,7 @@ set -x
 
 #kubectl apply -f roles-job.yml
 
-TOKEN=$(kubectl describe secret $(kubectl get secrets | grep default | cut -f1 -d ' ') | grep -E '^token' | cut -f2 -d':' | tr -d '\t' | xargs )
+TOKEN=$(kubectl describe secret $(kubectl get secrets -n jobs-test | grep default | cut -f1 -d ' ') -n jobs-test | grep -E '^token' | cut -f2 -d':' | tr -d '\t' | xargs )
 
 curl -v -k \
 	--header "Authorization: Bearer $TOKEN" \
