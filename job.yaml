@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: job-wq-2
+  namespace: jobs-test
+spec:
+  parallelism: 1
+  completions: 1
+  template:
+    metadata:
+      name: job-wq-2
+    spec:
+      containers:
+      - name: c
+        image: saifuddin53/job-wq-2
+      restartPolicy: OnFailure
