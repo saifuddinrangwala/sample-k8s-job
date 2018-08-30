@@ -20,6 +20,7 @@ class K8SJob(object):
         self._job["spec"] = {}
         self._job["spec"]["parallelism"] = 1
         self._job["spec"]["completions"] = 1
+        self._job["spec"]["backoffLimit"] = 1
         self._job["spec"]["template"] = {}
         self._job["spec"]["template"]["metadata"] = {}
         self._job["spec"]["template"]["metadata"]["name"] = job_name

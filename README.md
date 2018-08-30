@@ -55,3 +55,16 @@ rolebinding "default-role-binding" unchanged
 
 Check roles-job.yml for details of permissions
 
+# Failure handling
+
+Jobs can be configured to retry or restart pods on failure for a given number of times before it fails or succeeds. For example, setting backoffLimit=1(like in this example) will ensure that the job will create the pod only once if case of pod failure. See https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/#job-termination-and-cleanup for more details.
+
+This can be tested by creating and running the sample job to failure by passsing -f flag.
+
+$ ./run_job.py -f
+
+
+$ ./run_job.py -h to see the options it supports.
+
+
+
