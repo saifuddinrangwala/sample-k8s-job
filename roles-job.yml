@@ -5,9 +5,9 @@ metadata:
   name: default-role
   namespace: jobs-test
 rules:
-  - apiGroups: ["", "extensions", "apps", "batch"]
-    resources: ["*"]
-    verbs: ["*"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create"]
 ---
 
 kind: RoleBinding

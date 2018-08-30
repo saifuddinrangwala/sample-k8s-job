@@ -36,13 +36,22 @@ NAME                                                    DESIRED   SUCCESSFUL   A
 jobs/sample-work-9978a662-ac3a-11e8-b2a2-0ad04fef5a10   1         1            2m
 
 As you can see from the output of ./run_job.py, it also created a label job_group=sample-work. These labels can be used to cleanup all the completed jobs. Jobs are logical entities and not deleted after the job run is complete.
+Below command can be used to clean up all jobs, of course it needs to include filters to select only the ones that are completed.
+$ kubectl delete jobs -l job_group=sample-work -n jobs-test
+job "sample-work-06a22270-ac33-11e8-b2a2-0ad04fef5a10" deleted
+job "sample-work-145cd1a8-ac33-11e8-b2a2-0ad04fef5a10" deleted
+job "sample-work-1cf81494-ac47-11e8-b2a2-0ad04fef5a10" deleted
+job "sample-work-2c692af8-ac47-11e8-b2a2-0ad04fef5a10" deleted
+job "sample-work-34a45d50-ac47-11e8-b2a2-0ad04fef5a10" deleted
+job "sample-work-45be940c-ac33-11e8-b2a2-0ad04fef5a10" deleted
+job "sample-work-9978a662-ac3a-11e8-b2a2-0ad04fef5a10" deleted
+job "sample-work-fcf740de-ac46-11e8-b2a2-0ad04fef5a10" deleted
 
 
+The service account token we used to create jobs by default doesnt have the required permissions. We need to provide the permissions for the same
+$ ./setup-roles.sh
+role "default-role" unchanged
+rolebinding "default-role-binding" unchanged
 
-
-
-
-
-
-
+Check roles-job.yml for details of permissions
 
