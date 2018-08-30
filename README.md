@@ -2,6 +2,8 @@
 
 Each namespace has a default service account created.
 
+$ kubectl create namespace jobs-test
+
 $ kubectl get sa -n jobs-test
 
 This service account will have a token created and regsitered as a secret that can be made available to the containers.
