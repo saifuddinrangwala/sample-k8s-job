@@ -31,6 +31,7 @@ class K8SJob(object):
         container = {}
         container["name"] = job_name
         container["image"] = "saifuddin53/sample-work"
+        container["imagePullPolicy"] = "IfNotPresent"
         container["command"] = command
         self._job["spec"]["template"]["spec"]["containers"].append(container)
 
@@ -40,11 +41,17 @@ class K8SJob(object):
         return json.dumps(self._job, indent=4, sort_keys=True)
 
     def run(self):
+        print "JOB Request ==============================================="
+        print str(self)
+        print "JOB Request END ==============================================="
+
         r = requests.post(self._job_api,
                 json=self._job,
                 headers = {'Authorization': 'Bearer ' + os.environ['TOKEN']},
                 verify=False)
-        print r.text
+        print "JOB Response ==============================================="
+        print json.dumps(r.json(), indent=4, sort_keys=True)
+        print "JOB Response END ==============================================="
 
 
 
